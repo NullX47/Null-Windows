@@ -9,7 +9,7 @@ set start=%time%
 set "ch=Work\cecho.exe"
 set "NSudo=Work\NSudoLC.exe -U:T -P:E -ShowWindowMode:Hide -Wait cmd.exe /c"
 set "serviceswebmask="
-for /f "usebackq delims=" %%n In (`2^>nul reg query "HKLM\%HIVE%\Services" /f "webthreatdefusersvc*" /k^|findstr ^H`) do set serviceswebmask=%%~nxn
+for /f "usebackq delims=" %%n In (`2^>nul reg query "HKLM\SYSTEM\CurrentControlSet\Services" /f "webthreatdefusersvc*" /k^|findstr ^H`) do set serviceswebmask=%%~nxn
 if defined serviceswebmask (Mode 82,44) else (Mode 80,44)
 "Work\nircmd.exe" win center process cmd.exe & "Work\nircmd.exe" win settext foreground "Null.Script.For.Windows.Telemetry"
 :----------------------------------------------------------------------------:
